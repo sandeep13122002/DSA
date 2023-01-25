@@ -1,0 +1,12 @@
+    void dfs(vector<int>& edges,int node,vector<int>& dist,vector<int>& visited,int distance){
+
+        // base condition. (already visited or cannot move forward.)
+        if(node == -1 || visited[node] == 1 ){return ;}
+        
+        // make current node visited.
+        visited[node] = 1;
+        dist[node] = distance;
+        // call dfs for other node.
+        dfs(edges,edges[node],dist,visited,distance+1);
+
+    }
