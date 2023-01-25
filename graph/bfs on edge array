@@ -1,0 +1,24 @@
+    void bfs(int startNode, vector<int>& edges, vector<int>& dist) {
+        int n = edges.size();
+        queue<int> q;
+        q.push(startNode);
+
+        vector<bool> visit(n);
+        dist[startNode] = 0;
+
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+
+            if (visit[node]) {
+                continue;
+            }
+
+            visit[node] = true;
+            int neighbor = edges[node];
+            if (neighbor != -1 && !visit[neighbor]) {
+                dist[neighbor] = 1 + dist[node];
+                q.push(neighbor);
+            }
+        }
+    }
