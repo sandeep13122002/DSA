@@ -1,0 +1,62 @@
+#include <iostream>
+#include<algorithm>
+#include<vector>
+#include<bits/stdc++.h>
+using namespace std;
+
+int query(int x){
+cout<<"- "<<x<<endl;
+cout.flush();
+int res=0;
+cin>>res;
+
+
+return res;
+}
+void solve(){
+int n=1;
+cin>>n;
+int totalbits=n,bitstoleft=n;
+int ans=0;
+for(int b=0;b<30 && bitstoleft>0;b++){
+    int bit=1<<b;
+    int res=query(bit);
+    if(res==totalbits-1){
+        ans|=bit;
+        bitstoleft--;
+        totalbits--;
+    }else{
+       int setbit=b+res-totalbits+1;
+       b=setbit;
+       ans|=1<<setbit;
+       bitstoleft--;
+       totalbits=res;
+
+
+    }
+
+
+
+}
+
+cout<<"! "<<ans<<endl;
+cout.flush();
+
+}
+
+
+
+
+
+int main() {
+	// your code goes here
+int t;
+cin>>t;
+while(t--){
+    solve();
+}
+
+
+
+	return 0;
+}
